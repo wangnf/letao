@@ -1,0 +1,10 @@
+/* 商品列表 */
+
+.mui-table-view-cell a.active {
+    color: #fff;
+    background: hotpink;
+}
+
+.mui-table-view-cell a.active::after {
+    color: #fff;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>乐淘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/comment.css">
+    <link rel="stylesheet" href="css/category.css">
+</head>
+
+<body>
+    <!-- 主体 -->
+    <div class="lt-container">
+        <header class="lt-header">
+            <a href="javascript:history.back();"><span class="fa fa-arrow-left"></span></a>
+            <h3>乐淘云购</h3>
+            <a href="search.html"><span class="fa fa-search"></span></a>
+        </header>
+        <div class="lt-content">
+            <div class="lt-wrapper">
+                <!--滚动区域-->
+                <div class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <!-- 商品分类 -->
+                        <div class="mui-content">
+                            <div class="mui-row">
+                                <div class="mui-col-sm-4">
+                                    <ul class="mui-table-view category_l">
+                                        <!-- TODO -->
+                                    </ul>
+                                </div>
+                                <div class="mui-col-sm-8 category_r">
+                                    <!-- TODO -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="lt-footer">
+            <a class="tab_home fa fa-home" href="index.html"><span>首页</span></a>
+            <a class="tab_cate fa fa-bars active" href="category.html"><span>分类</span></a>
+            <a class="tab_cart fa fa-shopping-cart" href="cart.html"><span>购物车</span></a>
+            <a class="tab_user fa fa-user" href="user/index.html"><span>会员中心</span></a>
+        </footer>
+    </div>
+    <script type="text/template" id="firstTemplate">
+        <% for(var i = 0; i < rows.length; i++) { %>
+            <li class="mui-table-view-cell">
+                <a href="javascript:;" class="mui-navigate-right <%=i==0?'active':'' %>" data-id="<%=rows[i].id %>">
+                    <%=rows[i].categoryName %>
+                </a>
+            </li>
+            <% } %>
+    </script>
+    <script type="text/template" id="secondTemplate">
+        <% if(rows.length){ %>
+            <% for(var i = 0;i < rows.length; i++){ %>
+                <div class="mui-card" data-id="<%=rows[i].id %>">
+                    <!--页头，放置标题-->
+                    <div class="mui-card-header">
+                        <%=rows[i].brandName %>
+                    </div>
+                    <!--内容区-->
+                    <div class="mui-card-content">
+                        <img src="<%=rows[i].brandLogo %>"></img>
+                    </div>
+                </div>
+                <% } %>
+                    <%}else{%>
+                        <div class="mui-card">
+                            <!--内容区-->
+                            <div class="mui-card-content mui-text-center">
+                                暂无数据
+                            </div>
+                        </div>
+                        <%}%>
+    </script>
+
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/zepto/zepto.min.js"></script>
+    <script src="assets/artTemplate/template-native.js"></script>
+    <script src="js/category.js"></script>
+
+</body>
+
+</html>

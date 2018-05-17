@@ -1,0 +1,77 @@
+.lt-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.lt-header {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background: #006699;
+}
+
+.lt-header a {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+}
+
+.lt-header h3 {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    line-height: 45px;
+    padding: 0;
+    margin: 0;
+}
+
+.lt-footer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 55px;
+    bottom: 0;
+    left: 0;
+    background: #006699;
+}
+
+.lt-footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 55px;
+    color: #fff;
+    text-align: center;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.lt-footer a span {
+    margin-top: 5px;
+}
+
+.lt-footer a.active {
+    color: hotpink;
+}
+
+.lt-content {
+    padding: 45px 0 55px;
+    width: 100%;
+    height: 100%;
+}
+
+.lt-content .lt-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
