@@ -90,7 +90,34 @@ $(function() {
     })
 
     //3.左滑点击删除，删除商品
+    $('.mui-table-view').on('tap', '.mui-btn-red', function() {
+        var $this = $(this);
+        var id = $this.parent().data('id');
+        mui.confirm('确定删除该商品吗？', '删除商品', ['确定', '取消'], function(e) {
+            if (e.index == 0) {
+
+                lt.loginAjax({
+                    url: '/cart/deleteCart',
+                    type: 'get',
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        if (data.success == true) {
+                            $this.parents('li').remove();
+                        }
+                    }
+                })
+
+            } else {
+                //TODO
+            }
+        })
+    });
     //4.点击input，计算金额
+    $('.mui-table-view').on('change', '[type=checkbox]', function() {
+        getamount();
+    })
 })
 
 var getCartData = function(callback) {
@@ -109,4 +136,23 @@ var getCartData = function(callback) {
             callback && callback(data);
         }
     })
+}
+
+var getamount = function() {
+    var allMount = 0;
+    $('[type=checkbox]:checked').each(function(i, item) {
+        var id = $(this).data('id');
+        var data = lt.getItemById(window.cartData.data, id);
+        var price = data.price;
+        var num = data.num;
+        var mount = num * price;
+        allMount += mount;
+    })
+    if (Math.floor(allMount * 100) % 10) {
+        allMount = Math.floor(allMount * 100) / 100;
+    } else {
+        allMount = Math.floor(allMount * 100) / 100;
+        allMount = allMount.toString() + '0';
+    }
+    $('#cartAmount').html(allMount);
 }
