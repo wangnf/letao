@@ -13,9 +13,24 @@ lt.getParsmsByUrl = function() {
     }
     return params;
 };
-//关于登录的ajax
+//表单序列化数据转换
+lt.serialize2object = function(serialize) {
+        var obj = {};
+        if (serialize) {
+            var arr = serialize.split('&');
+
+            arr.forEach(function(item, i) {
+                var itemArr = item.split('=');
+                obj[itemArr[0]] = itemArr[1];
+            })
+
+        }
+        return obj;
+    }
+    //关于登录的ajax
 lt.loginUrl = '/wnf/user/login.html';
 lt.cartUrl = '/wnf/user/cart.html';
+lt.userUrl = '/wnf/user/index.html';
 lt.loginAjax = function(params) {
     $.ajax({
         url: params.url || '#',

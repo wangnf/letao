@@ -4,12 +4,63 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>乐淘</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/comment.css">
+    <link rel="stylesheet" href="../css/user.css">
 </head>
 
 <body>
-    <h1>login</h1>
+    <!-- 主体 -->
+    <div class="lt-container">
+        <header class="lt-header">
+            <a href="javascript:history.back();">
+                <span class="fa fa-arrow-left"></span>
+            </a>
+            <h3>登录</h3>
+            <a href="javascript:;"></a>
+        </header>
+        <div class="lt-content">
+            <div class="lt-wrapper">
+                <!-- 登录板块 -->
+                <form class="mui-input-group">
+                    <div class="mui-input-row">
+                        <label>用户名</label>
+                        <input name="username" type="text" class="mui-input-clear" placeholder="请输入用户名">
+                    </div>
+                    <div class="mui-input-row">
+                        <label>密码</label>
+                        <input name="password" type="password" class="mui-input-password" placeholder="请输入密码">
+                    </div>
+                    <div class="mui-button-row">
+                        <button type="button" id="submit" class="mui-btn mui-btn-primary">确认</button>
+                        <button type="button" class="mui-btn mui-btn-danger">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer class="lt-footer">
+            <a class="tab_home fa fa-home active" href="../index.html">
+                <span>首页</span>
+            </a>
+            <a class="tab_cate fa fa-bars" href="../category.html">
+                <span>分类</span>
+            </a>
+            <a class="tab_cart fa fa-shopping-cart" href="cart.html">
+                <span>购物车</span>
+            </a>
+            <a class="tab_user fa fa-user" href="index.html">
+                <span>会员中心</span>
+            </a>
+        </footer>
+    </div>
+
+    <script src="../assets/mui/js/mui.min.js"></script>
+    <script src="../assets/zepto/zepto.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

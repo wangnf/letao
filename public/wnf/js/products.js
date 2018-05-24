@@ -95,5 +95,4 @@ function productDetail(productId, callback) {
             }, 1000);
         }
     })
-
 }
