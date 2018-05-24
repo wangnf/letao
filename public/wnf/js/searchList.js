@@ -68,7 +68,7 @@ $(function() {
                 $('.lt-product').html(template('productTemplate', data))
             });
         })
-        //5.下拉刷新
+        //5.下拉刷新，下拉加载
     mui.init({
         pullRefresh: {
             container: "#refreshContainer", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
@@ -135,8 +135,6 @@ $(function() {
             }
         }
     });
-
-    //6.下载加载
 
 })
 
