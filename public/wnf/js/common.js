@@ -33,21 +33,31 @@ lt.cartUrl = '/wnf/user/cart.html';
 lt.userUrl = '/wnf/user/index.html';
 //关于登录的ajax
 lt.loginAjax = function(params) {
-    $.ajax({
-        url: params.url || '#',
-        type: params.type || 'get',
-        datatype: params.datatype || 'json',
-        data: params.data || {},
-        success: function(data) {
-            if (data.error == 400) {
-                location.href = lt.loginUrl + '?returnUrl=' + location.href;
-                return false;
-            } else {
-                params.success && params.success(data);
+        $.ajax({
+            url: params.url || '#',
+            type: params.type || 'get',
+            datatype: params.datatype || 'json',
+            data: params.data || {},
+            success: function(data) {
+                if (data.error == 400) {
+                    location.href = lt.loginUrl + '?returnUrl=' + location.href;
+                    return false;
+                } else {
+                    params.success && params.success(data);
+                }
+            },
+            error: function() {
+                mui.toast('服务器繁忙');
             }
-        },
-        error: function() {
-            mui.toast('服务器繁忙');
+        })
+    }
+    /*根据id 获取数据*/
+lt.getItemById = function(arr, id) {
+    var obj = null;
+    arr.forEach(function(item, i) {
+        if (item.id == id) {
+            obj = item;
         }
     })
+    return obj;
 }

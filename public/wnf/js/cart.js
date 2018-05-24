@@ -31,6 +31,64 @@ $(function() {
         mui('#refreshContainer').pullRefresh().pulldownLoading();
     });
     //2.左滑点击编辑，弹出编辑框，修改尺码数量，
+    $('.mui-table-view').on('tap', '.mui-btn-blue', function() {
+            var id = $(this).parent().data('id');
+            var itemData = lt.getItemById(window.cartData.data, id);
+            var html = template('edit', itemData);
+            mui.confirm(html.replace(/\n/g, ''), '商品编辑', ['确定', '取消'], function(e) {
+                if (e.index == 0) {
+                    var size = $('.btn_size.now').html();
+                    var num = $('.p_number input').val();
+                    lt.loginAjax({
+                        url: '/cart/updateCart',
+                        type: 'post',
+                        data: {
+                            id: id,
+                            size: size,
+                            num: num
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.success == true) {
+                                itemData.size = size;
+                                itemData.num = num;
+                                //初始化页面
+                                $('.mui-table-view').html(template('cart', window.cartData));
+                            }
+                        }
+                    })
+                } else {
+                    //TODO
+                }
+            })
+        })
+        //选择尺码，数量
+    $('body').on('tap', '.btn_size', function() {
+        $(this).addClass('now').siblings().removeClass('now');
+    });
+    $('body').on('tap', '.p_number span', function() {
+        var $input = $(this).siblings('input');
+        var curNum = $input.val();
+        //注意这个值是否为数字
+        var maxNum = $input.data('max');
+        if ($(this).hasClass('jian')) {
+            if (curNum == 0) {
+                return false;
+            }
+            curNum--;
+        } else {
+            if (curNum >= maxNum) {
+                setTimeout(() => {
+                    mui.toast('库存不足');
+                }, 100);
+
+                return false;
+            }
+            curNum++;
+        }
+        $input.val(curNum);
+    })
+
     //3.左滑点击删除，删除商品
     //4.点击input，计算金额
 })
@@ -47,6 +105,7 @@ var getCartData = function(callback) {
         },
         dataType: 'json',
         success: function(data) {
+            window.cartData = data;
             callback && callback(data);
         }
     })

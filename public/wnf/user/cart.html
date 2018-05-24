@@ -56,11 +56,27 @@
             </a>
         </footer>
     </div>
+    <script type="text/template" id="edit">
+
+        <div class="cart_update">
+            <div class="p_size">
+                尺码：
+                <% var sizeArr = productSize.split('-'); %>
+                    <% for(var i = sizeArr[0];i<=sizeArr[1];i++){ %>
+                        <span class="btn_size <%=i==size?'now':''%>"><%=i%></span>
+                        <% } %>
+            </div>
+            <div class="p_number">
+                数量：
+                <span class="jian">-</span><input readonly="" type="text" value="<%=num%>" data-max="<%=productNum%>"><span class="jia">+</span>
+            </div>
+        </div>
+    </script>
     <script type="text/template" id="cart">
         <% for(var i = 0;i<data.length;i++){ %>
             <% var item = data[i] %>
                 <li data-product class="mui-table-view-cell mui-media">
-                    <div class="mui-slider-right mui-disabled">
+                    <div class="mui-slider-right mui-disabled" data-id="<%=item.id%>">
                         <a class="mui-btn mui-btn-blue" style="transform: translate(0px, 0px);">编辑</a>
                         <a class="mui-btn mui-btn-red" style="transform: translate(0px, 0px);">删除</a>
                     </div>
